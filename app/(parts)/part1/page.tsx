@@ -1,7 +1,5 @@
-import { Header } from "@/components/home/Header";
-import Image from "next/image";
 import { HomeClient } from "@/components/home/HomeClient";
-import { Search } from "@/components/home/Search";
+import { Search } from "@/components/Search";
 import { serverClient } from "../../_trpc/serverClient";
 import { Container } from "@/components/Container";
 import { Typography } from "@mui/material";

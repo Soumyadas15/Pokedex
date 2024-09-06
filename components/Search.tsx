@@ -2,11 +2,9 @@
 
 import React, { useState, useEffect, useCallback } from 'react';
 import { TextField, useTheme } from '@mui/material';
-import { Container } from '../Container';
+import { Container } from './Container';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useDebounce } from 'use-debounce';
-import { Button } from '../ui/Button';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { Pagination } from './Pagination';
 
 interface SearchProps{
@@ -70,7 +68,7 @@ export const Search: React.FC<SearchProps> = ({
                     InputProps={{
                         sx: {
                             borderRadius: '50px',
-                            backgroundColor: isDarkMode ? '#282828' : '#F9F9F9',
+                            backgroundColor: isDarkMode ? '#282828' : '#e9e8e8',
                             color: isDarkMode ? '#FFFFFF' : '#000000',
                             transition: "background-color 0.5s ease, color 0.3s ease",
                         },

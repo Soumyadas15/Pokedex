@@ -1,4 +1,4 @@
-import { Search } from "@/components/home/Search";
+import { Search } from "@/components/Search";
 import { serverClient } from "../../_trpc/serverClient";
 import { Container } from "@/components/Container";
 import { Typography } from "@mui/material";

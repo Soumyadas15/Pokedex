@@ -2,7 +2,7 @@ import { AppRouterCacheProvider } from '@mui/material-nextjs/v13-appRouter';
 import { Navbar } from "@/components/ui/Navbar";
 import { ColorModeProvider } from "@/providers/ColorModeProvider";
 import { Toaster } from "react-hot-toast";
-import { Header } from '@/components/home/Header';
+import { Header } from '@/components/Header';
 
 export default function PartsLayout({
   children,

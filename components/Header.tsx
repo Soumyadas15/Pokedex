@@ -1,7 +1,7 @@
 "use client"
 
 import Image from "next/image"
-import { Container } from "../Container"
+import { Container } from "./Container"
 import pokeball from "@/public/assets/pokeball.png"
 import { Typography } from "@mui/material"
 import { usePathname, useRouter } from "next/navigation"
@@ -61,9 +61,9 @@ export const PartItem: React.FC<PartItemProps> = ({
     return (
         <div 
             className={`p-2 px-4  
-                        rounded-md hover:bg-[#242424] cursor-pointer 
+                        rounded-md hover:dark:bg-[#242424] hover:bg-[#faf9f9] cursor-pointer 
                         transition duration-300 font-semibold
-                        ${isActive ? 'bg-[#cfcfcf] dark:bg-[#282828]' : ''}
+                        ${isActive ? 'bg-[#e9e8e8] dark:bg-[#282828]' : ''}
                 `}
             onClick={() => router.push(`/${route}`)}
         >

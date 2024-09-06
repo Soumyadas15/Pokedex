@@ -1,5 +1,5 @@
 import { ChevronLeft, ChevronRight } from "lucide-react"
-import { Button } from "../ui/Button"
+import { Button } from "./ui/Button"
 import { useRouter, useSearchParams } from "next/navigation";
 import { useCallback, useState } from "react";
 

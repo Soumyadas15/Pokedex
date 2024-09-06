@@ -2,7 +2,7 @@ import React, { useCallback } from 'react';
 import { FormControl, InputLabel, Select, MenuItem, useTheme, SelectChangeEvent } from '@mui/material';
 import { Container } from '../../../components/Container';
 import { useRouter, useSearchParams } from 'next/navigation';
-import { Pagination } from '@/components/home/Pagination';
+import { Pagination } from '@/components/Pagination';
 
 const pokemonTypes = [
   'Normal', 'Fire', 'Water', 'Grass', 'Electric', 'Ice', 'Fighting', 'Poison', 'Ground',
@@ -72,7 +72,7 @@ export const PokemonTypeSelection: React.FC<PokemonTypeSelectionProps> = ({
               sx={{
                 height: '43px',
                 borderRadius: '50px',
-                backgroundColor: isDarkMode ? '#282828' : '#F9F9F9',
+                backgroundColor: isDarkMode ? '#282828' : '#e9e8e8',
                 color: isDarkMode ? '#FFFFFF' : '#000000',
                 transition: "background-color 0.5s ease, color 0.3s ease",
                 '& .MuiOutlinedInput-notchedOutline': {
