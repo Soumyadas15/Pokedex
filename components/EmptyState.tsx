@@ -1,7 +1,7 @@
 "use client"
 
 import React from "react";
-import empty from "@/public/animations/Empty.json"
+import empty from "../public/animations/empty.json"
 import Lottie from "lottie-react";
 import { Typography } from "@mui/material";
 

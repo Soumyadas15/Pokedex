@@ -1,7 +1,7 @@
 "use client"
 
 import React from "react";
-import loader from "@/public/animations/Loader.json"
+import loader from "../../public/animations/loader.json"
 import { Typography } from "@mui/material";
 import Lottie from "lottie-react";
 
