@@ -17,6 +17,7 @@ export const getPokemonByNames = async (names: string[], page: number, limit: nu
     where: {
       name: {
         in: names,
+        mode: 'insensitive',
       },
     },
     skip: (page - 1) * limit,
@@ -27,6 +28,7 @@ export const getPokemonByNames = async (names: string[], page: number, limit: nu
     where: {
       name: {
         in: names,
+        mode: 'insensitive',
       },
     },
     skip: page * limit,

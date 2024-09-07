@@ -103,7 +103,7 @@ export const getPokemonRouter = router({
 
       // Fetch Pokémon by a single name
       if (name) {
-        const cacheKey = getCacheKey("name", { name });
+        const cacheKey = getCacheKey("name", { name: name.toLowerCase() });
         const cachedPokemon = await getCachedPokemon(cacheKey);
         if (cachedPokemon) {
           return { pokemons: [cachedPokemon], hasNext: false };

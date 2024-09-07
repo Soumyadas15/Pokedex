@@ -8,9 +8,12 @@ import { prisma } from "@/lib/prisma";
  */
 
 export const getPokemonByName = async (name: string) => {
-  return prisma.pokemon.findUnique({
+  return prisma.pokemon.findFirst({
     where: {
-      name,
+      name: {
+        equals: name,
+        mode: 'insensitive',
+      },
     },
   });
 };
