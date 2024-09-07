@@ -1,36 +1,60 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+# Pokedex Problem
 
-First, run the development server:
+  
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Created using Nextjs, Pokedex lets you search for Pokemons using specific TRPC routes. This is an assignment for Madverse Music
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+  
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Things Implemented
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+  
 
-## Learn More
+-  **DB Design**: A PostgreSql database with prisma ORM. The DB is hosted on Neon.
 
-To learn more about Next.js, take a look at the following resources:
+-  **Pagination**: Database level pagination using prisma ORM.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+-  **Caching**: Caching using Redis cache.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+-  **UI/UX**: Modern UI/UX using MaterialUI and a little bit of Tailwind.
 
-## Deploy on Vercel
+# Pokedex Setup and Run Guide 
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Prerequisites 
+- Node.js installed 
+- PostgreSQL and Redis set up (or access to external services) 
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Steps to Run the App 
+
+1. **Clone the Repository** 
+
+	```
+	git clone git@github.com:Soumyadas15/Pokedex.git
+	cd Pokedex
+	```
+2. **Install the Packages** 
+
+	```
+	npm install
+	```
+3. **Setup Environment files** 
+
+	In the root of the project create a .env file with the following details:
+
+	```
+	DATABASE_URL=
+	REDIS_HOST=
+	REDIS_PASSWORD=
+	REDIS_PORT=
+	```
+4. **Run the App** 
+
+	Finally run the app using.
+
+	```
+	npm run dev
+	```
+5. **Check browser** 
+
+	Visit [http://localhost:3000/](http://localhost:3000/) to see the app running.
