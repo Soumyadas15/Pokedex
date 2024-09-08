@@ -8,7 +8,7 @@ import { prisma } from "@/lib/prisma";
  */
 
 export const getPokemonByName = async (name: string) => {
-  return prisma.pokemon.findFirst({
+  const pokemon = await prisma.pokemon.findFirst({
     where: {
       name: {
         equals: name,
@@ -16,4 +16,6 @@ export const getPokemonByName = async (name: string) => {
       },
     },
   });
+
+  return [pokemon];
 };

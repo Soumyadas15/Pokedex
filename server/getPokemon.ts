@@ -60,18 +60,6 @@ const getCacheKey = (type: string, params: Record<string, any>): string => {
  * @type {import('./trpc').Router}
  */
 export const getPokemonRouter = router({
-  /**
-   * Procedure to fetch Pokémon data based on input parameters.
-   * 
-   * @param {Object} input - The input parameters for the query.
-   * @param {string} [input.name] - The name of a single Pokémon to fetch.
-   * @param {string[]} [input.names] - An array of names of Pokémon to fetch.
-   * @param {number} [input.page=1] - The page number for pagination.
-   * @param {number} [input.limit=10] - The number of items per page.
-   * @returns {Promise<Object>} The response object containing Pokémon data and pagination information.
-   * @returns {Object[]} returns.pokemons - An array of Pokémon data.
-   * @returns {boolean} returns.hasNext - A boolean indicating if there are more Pokémon available.
-   */
   getPokemon: publicProcedure
     .input(z.object({
       name: z.string().optional(),
@@ -81,11 +69,12 @@ export const getPokemonRouter = router({
     .query(async ({ input }) => {
       const { name, names, page = 1, limit = 10 } = input;
 
-      // Fetch Pokémon by multiple names
       if (names && names.length > 0) {
         const sortedNames = names.slice().sort();
         const cacheKey = getCacheKey("names", { names: sortedNames.join(","), page, limit });
+        
         const cachedPokemons = await getCachedPokemon(cacheKey);
+        
         if (cachedPokemons) {
           return cachedPokemons;
         }
@@ -93,41 +82,38 @@ export const getPokemonRouter = router({
         const { pokemons, hasNext } = await getPokemonByNames(sortedNames, page, limit);
         const response = { pokemons, hasNext };
 
-        if (!pokemons || pokemons.length === 0) {
-          return { pokemons: [], hasNext: false };
-        }
-
         await setCachedPokemon(cacheKey, response);
         return response;
       }
 
-      // Fetch Pokémon by a single name
       if (name) {
-        const cacheKey = getCacheKey("name", { name: name.toLowerCase() });
+        const cacheKey = getCacheKey("name", { name: name.toLowerCase() })
+
         const cachedPokemon = await getCachedPokemon(cacheKey);
+        const pokemons = cachedPokemon?.pokemons || [];
+
         if (cachedPokemon) {
-          return { pokemons: [cachedPokemon], hasNext: false };
+          return { pokemons: cachedPokemon.pokemons, hasNext: false };
         }
 
         const pokemon = await getPokemonByName(name);
-        if (!pokemon) {
-          return { pokemons: [], hasNext: false };
-        }
+        const response = { pokemons: pokemon, hasNext: false };
 
-        const response = { pokemons: [pokemon], hasNext: false };
         await setCachedPokemon(cacheKey, response);
         return response;
       }
 
-      // Fetch all Pokémon with pagination
       const cacheKey = getCacheKey("all", { page, limit });
+      
       const cachedPokemons = await getCachedPokemon(cacheKey);
+      
       if (cachedPokemons) {
         return cachedPokemons;
       }
 
       const { pokemons, hasNext } = await getAllPokemon(page, limit);
       const response = { pokemons, hasNext };
+
       await setCachedPokemon(cacheKey, response);
       return response;
     }),

@@ -26,6 +26,8 @@ export default async function Home({
     limit: ITEMS_PER_PAGE,
   });
 
+  console.log('Home', pokemons)
+
   return (
     <div className="pb-[3vw]">
       <Search placeholder="Search.." hasNext={hasNext} />

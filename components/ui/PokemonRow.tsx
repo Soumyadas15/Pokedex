@@ -3,9 +3,11 @@
 import { Pokemon } from "@prisma/client";
 import React from "react";
 import { Card, CardContent, Typography, CardMedia, useTheme, Chip, Box } from "@mui/material";
+import { Container } from "../Container";
+import { EmptyState } from "../EmptyState";
 
 interface PokemonRowProps {
-  pokemon: Pokemon;
+  pokemon?: Pokemon;
 }
 
 export const PokemonRow: React.FC<PokemonRowProps> = ({ pokemon }) => {
@@ -28,11 +30,18 @@ export const PokemonRow: React.FC<PokemonRowProps> = ({ pokemon }) => {
         return "#98D8D8";
       case "dragon":
         return "#7038F8";
-      
       default:
         return "#A8A878";
     }
   };
+
+  if (!pokemon) return (
+    <Container>
+      <div className="mt-6 w-full flex items-center justify-center z">
+        <EmptyState label="No Pokemon Found"/>
+      </div>
+    </Container>
+  );
 
   return (
     <Card
